@@ -1,0 +1,31 @@
+
+Oct 6, 2015
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+What makes an HTTP API more or less RESTful?
+
+Here are some online sources that might help me to answer that question:
+
+https://en.wikipedia.org/wiki/Representational_state_transfer
+http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm
+http://www.restapitutorial.com/lessons/whatisrest.html
+http://www.restapitutorial.com/lessons/restquicktips.html
+http://www.fullstackpython.com/api-creation.html
+	http://www.narwhl.com/
+		http://martinfowler.com/articles/richardsonMaturityModel.html
+	https://medium.com/@zwacky/design-a-beautiful-rest-api-901c73489458
+	
+See also:
+
+http://www.fullstackpython.com/api-creation.html
+https://jeffknupp.com/blog/2014/08/08/sandman-rebooted-create-a-rest-api-for-legacy-databases-without-writing-code/
+	http://www.jeffknupp.com/blog/2014/07/15/your-databases-rest-api-sandman-one-year-later/ (notable comments on REST, HATEOAS, semantic gap, impedance mismatch)
+		"It also fueled my interest in REST APIs, HATEOAS, and the semantic gap (all of which were the subject of other posts)."
+		"This got me thinking more about web frameworks and the impedance mismatch between most web frameworks and RESTful API creation."
+			See also his project called whizbang/omega: https://github.com/jeffknupp/omega
+http://www.slashdb.com/
+	
+Initial, speculative answer:
+
+My initial impression of more and lesser RESTful APIs is that, of the six REST constriants (client-server, stateless, cacheable, uniform interface, layered system, code-on-deman), the ones that are most often neglected (to one degree or another) are stateless, cacheable, and uniform interface. Some HTTP API's probably store state on the server between client requests, and so are not stateless. Some don't explicitly mark responses as cacheable or not. And some fail to provide the desired uniform interface by creating bad resource identifiers, failing to use links fully, etc. (See https://en.wikipedia.org/wiki/Representational_state_transfer#Uniform_interface.)
+
