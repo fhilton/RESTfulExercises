@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TimeLogging.Models;
+using TimeLogging.DataAccess;
 
 namespace TimeLogging.Controllers
 {
@@ -10,7 +12,10 @@ namespace TimeLogging.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            List<TimeLogViewModel> entries = TimeLogService.GetFiveLatestEntries();
+
+            //return View("timelogs", entries);
+            return View(entries);
         }
 
         public ActionResult About()

@@ -42,3 +42,13 @@ Initial, speculative answer:
 
 My initial impression of more and lesser RESTful APIs is that, of the six REST constriants (client-server, stateless, cacheable, uniform interface, layered system, code-on-deman), the ones that are most often neglected (to one degree or another) are stateless, cacheable, and uniform interface. Some HTTP API's probably store state on the server between client requests, and so are not stateless. Some don't explicitly mark responses as cacheable or not. And some fail to provide the desired uniform interface by creating bad resource identifiers, failing to use links fully, etc. (See https://en.wikipedia.org/wiki/Representational_state_transfer#Uniform_interface.)
 
+
+How can I adapt the default ASP.NET MVC app to display time log entries and allow the user to submit new ones?
+
+	1- Add a new table to the embedded DB to store the entries. DONE
+	2- Edit the home page to query for existing time log entries and allow for the addition of new ones.
+		http://stackoverflow.com/questions/9815455/display-a-table-list-data-dynamically-in-mvc3-razor-from-a-jsonresult
+	3- Make a Web API that will allow other apps to make time log entries.
+		http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
+		
+		
