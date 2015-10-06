@@ -13,7 +13,19 @@ http://www.restapitutorial.com/lessons/restquicktips.html
 http://www.fullstackpython.com/api-creation.html
 	http://www.narwhl.com/
 		http://martinfowler.com/articles/richardsonMaturityModel.html
+			"REST in Practice: Hypermedia and Systems Architecture"
+			http://www.iana.org/assignments/link-relations/link-relations.xhtml
+			http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven
 	https://medium.com/@zwacky/design-a-beautiful-rest-api-901c73489458
+	
+Lance Buttars recommends: http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api
+	"For API security I recommend using client based certificates. 
+		http://security.stackexchange.com/questions/3605/certificate-based-authentication-vs-username-and-password-authentication
+	If that is not a possibility another option is to use SCRAM which avoids the issue of having the API store the client hash so using scram you store a shared proof.
+		https://tools.ietf.org/html/rfc5802
+			The difficulty with using scram is no one is familiar with it so you end up writing client based code so people can generate the correct client proof.
+	I am also not a big fan of OAuth
+		http://hueniverse.com/2012/07/26/oauth-2-0-and-the-road-to-hell/"
 	
 See also:
 
@@ -24,6 +36,7 @@ https://jeffknupp.com/blog/2014/08/08/sandman-rebooted-create-a-rest-api-for-leg
 		"This got me thinking more about web frameworks and the impedance mismatch between most web frameworks and RESTful API creation."
 			See also his project called whizbang/omega: https://github.com/jeffknupp/omega
 http://www.slashdb.com/
+http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
 	
 Initial, speculative answer:
 
