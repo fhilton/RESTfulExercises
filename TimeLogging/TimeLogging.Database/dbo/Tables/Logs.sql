@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[Logs] (
-    [Id]        INT         NOT NULL,
+    [Id]        INT         NOT NULL IDENTITY(1, 1),
     [UserId]    NCHAR (10)  NOT NULL,
     [StartTime] DATETIME    NOT NULL,
     [EndTime]   DATETIME    NOT NULL,
