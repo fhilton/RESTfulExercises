@@ -65,4 +65,7 @@
   <ItemGroup>
     <Build Include="dbo\Tables\Logs.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="TimeLogging.Database.LocalDb.publish.xml" />
+  </ItemGroup>
 </Project>
