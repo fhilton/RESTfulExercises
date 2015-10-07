@@ -12,34 +12,19 @@ namespace TimeLogging.DataAccess
     {
         public static List<TimeLogViewModel> GetFiveLatestEntries()
         {
-            var result = new List<TimeLogViewModel>();
+            var timeLoggingContext = new TimeLoggingContext();
 
-            var connStr = WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-
-            using (SqlConnection conn = new SqlConnection(connStr))
+            var result = timeLoggingContext.Logs.Select(l => new TimeLogViewModel()
             {
-                conn.Open();
-                
-                var cmd = conn.CreateCommand();
-                cmd.CommandText = "select top(5) * from dbo.TimeLogs";
-                var rdr = cmd.ExecuteReader();
+                UserId = l.UserId,
+                StartTime = l.StartTime,
+                EndTime = l.EndTime,
+                Comment = l.Comment,
+                Billable = l.Billable
+            });
+            return result.ToList();
 
-                while (rdr.Read())
-                {
-                    var entry = new TimeLogViewModel();
-                    entry.UserId = rdr.GetString(1);
-                    entry.StartTime = rdr.GetDateTime(2);
-                    entry.EndTime = rdr.GetDateTime(3);
-                    entry.Comment = rdr.GetString(4);
-                    entry.Billable = rdr.GetBoolean(5);
-
-                    result.Add(entry);
-                }
-
-                conn.Close();
-            }
-
-            return result;
         }
+
     }
 }
