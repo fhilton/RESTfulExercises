@@ -18,6 +18,16 @@ namespace TimeLogging.Controllers
             return View(entries);
         }
 
+        // POST: /SubmitTimeLog
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult SubmitTimeLog(TimeLogViewModel log)
+        {
+            TimeLogService.SubmitTimeLog(log);
+
+            return RedirectToAction("Index", "Home");
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

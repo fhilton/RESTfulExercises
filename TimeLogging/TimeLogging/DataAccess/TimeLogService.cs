@@ -26,5 +26,21 @@ namespace TimeLogging.DataAccess
 
         }
 
+        public static void SubmitTimeLog(TimeLogViewModel log)
+        {
+            var timeLoggingContext = new TimeLoggingContext();
+            var newEntry = new Log()
+            {
+                Billable = log.Billable,
+                Comment = log.Comment,
+                EndTime = log.EndTime,
+                StartTime = log.StartTime,
+                UserId = "doug"
+            };
+
+            timeLoggingContext.Logs.Add(newEntry);
+            timeLoggingContext.SaveChanges();
+        }
+
     }
 }
