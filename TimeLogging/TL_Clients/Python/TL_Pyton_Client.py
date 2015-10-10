@@ -74,6 +74,9 @@ class TimeLogOpsTest(unittest.TestCase):
         self.mockPrint = Mock(spec=print)
         self.port = '50249'
 
+    def _assertStatusMock(self):
+        self.phonyHttpResp.status.assert_called_once()
+
     def test_GetAllTimeLogs_OneClientCallMade(self):
         with patch('builtins.print'):
             with patch.object(self.phonyHttpResp, 'read', return_value=self.phony_text) as mock_method1:
@@ -81,6 +84,7 @@ class TimeLogOpsTest(unittest.TestCase):
                     self.tlo.GetAllTimeLogs(self.port)
         mock_method1.assert_called_once()
         mock_method2.assert_called_once()
+        self._assertStatusMock()
 
     def test_DeleteTimeLog_OneClientCallMade(self):
         with patch('builtins.print'):
@@ -89,6 +93,7 @@ class TimeLogOpsTest(unittest.TestCase):
                     self.tlo.DeleteTimeLog(self.port, "1")
         mock_method1.assert_called_once()
         mock_method2.assert_called_once()
+        self._assertStatusMock()
 
 def main():
     parser = argparse.ArgumentParser()
