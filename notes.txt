@@ -52,4 +52,23 @@ How can I adapt the default ASP.NET MVC app to display time log entries and allo
 	3- Make a Web API that will allow other apps to make time log entries.
 		http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
 		
-		
+
+Oct 9, 2015
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+My HTML form's use of datetime-local input type is being converted by the browser (Chrome) to UTC.
+	- Should I convert back to Eastern time?
+		- How did AD's Net Acq job code achieve that?
+	- the datetime-local type presents the user with a date picker widget, but the datetime type does not (in Chrome)
+		The datetime type is removed in HTML5. The datetime-local is preferred in HTML5, but it's not yet supported in IE or Firefox: http://www.w3schools.com/html/html_form_input_types.asp
+	
+I've learned today that if you do
+
+http://localhost:50249/api/Logs
+
+in Chrome that Chrome will add request an XML response (because of the HTTP header "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8").
+But, my python client gets a JSON response. That must be the default because my Python client does not specify an accept header.
+
+See the "Adding a Model" section of http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api.
+
+I've summed up my thoughts on REST in https://docs.google.com/presentation/d/1d1gKPsCupwUTx2z2vNad8lFDvsgPhYOmNmPUVJDm2jU/edit?usp=sharing.
