@@ -71,29 +71,27 @@ class TimeLogOpsTest(unittest.TestCase):
         self.phony_text = bytes(json.dumps('phony HTTP response body'), 'UTF-8')
         self.phonyHttpResp = Mock(spec=http.client.HTTPResponse)
         self.phonyHttpResp.status = Mock(return_value=200)
+        self.phonyHttpResp.read = Mock(return_value=self.phony_text)
         self.mockPrint = Mock(spec=print)
         self.port = '50249'
 
-    def _assertStatusMock(self):
+    def _assertSharedMocks(self):
         self.phonyHttpResp.status.assert_called_once()
+        self.phonyHttpResp.read.assert_called_once()
 
     def test_GetAllTimeLogs_OneClientCallMade(self):
         with patch('builtins.print'):
-            with patch.object(self.phonyHttpResp, 'read', return_value=self.phony_text) as mock_method1:
-                with patch.object(self.tlo.tlc, 'GetAllTimeLogs', return_value=self.phonyHttpResp) as mock_method2:
-                    self.tlo.GetAllTimeLogs(self.port)
-        mock_method1.assert_called_once()
-        mock_method2.assert_called_once()
-        self._assertStatusMock()
+            with patch.object(self.tlo.tlc, 'GetAllTimeLogs', return_value=self.phonyHttpResp) as mock_method:
+                self.tlo.GetAllTimeLogs(self.port)
+        mock_method.assert_called_once()
+        self._assertSharedMocks()
 
     def test_DeleteTimeLog_OneClientCallMade(self):
         with patch('builtins.print'):
-            with patch.object(self.phonyHttpResp, 'read', return_value=self.phony_text) as mock_method1:
-                with patch.object(self.tlo.tlc, 'DeleteTimeLog', return_value=self.phonyHttpResp) as mock_method2:
-                    self.tlo.DeleteTimeLog(self.port, "1")
-        mock_method1.assert_called_once()
-        mock_method2.assert_called_once()
-        self._assertStatusMock()
+            with patch.object(self.tlo.tlc, 'DeleteTimeLog', return_value=self.phonyHttpResp) as mock_method:
+                self.tlo.DeleteTimeLog(self.port, "1")
+        mock_method.assert_called_once()
+        self._assertSharedMocks()
 
 def main():
     parser = argparse.ArgumentParser()
