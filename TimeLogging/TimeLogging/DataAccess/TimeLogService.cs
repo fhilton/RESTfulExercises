@@ -14,7 +14,7 @@ namespace TimeLogging.DataAccess
         {
             var timeLoggingContext = new TimeLoggingContext();
 
-            var result = timeLoggingContext.Logs.Select(l => new TimeLogViewModel()
+            var result = timeLoggingContext.Logs.Take(5).Select(l => new TimeLogViewModel()
             {
                 UserId = l.UserId,
                 StartTime = l.StartTime,
