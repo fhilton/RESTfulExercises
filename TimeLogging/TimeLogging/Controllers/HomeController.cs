@@ -14,7 +14,6 @@ namespace TimeLogging.Controllers
         {
             List<TimeLogViewModel> entries = TimeLogService.GetFiveLatestEntries();
 
-            //return View("timelogs", entries);
             return View(entries);
         }
 
