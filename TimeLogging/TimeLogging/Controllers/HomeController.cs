@@ -14,8 +14,17 @@ namespace TimeLogging.Controllers
         {
             List<TimeLogViewModel> entries = TimeLogService.GetFiveLatestEntries();
 
-            //return View("timelogs", entries);
             return View(entries);
+        }
+
+        // POST: /SubmitTimeLog
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult SubmitTimeLog(TimeLogViewModel log)
+        {
+            TimeLogService.SubmitTimeLog(log);
+
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult About()

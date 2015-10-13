@@ -8,7 +8,7 @@ namespace TimeLogging.Models
 
     public partial class Log
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]
